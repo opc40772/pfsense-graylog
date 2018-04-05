@@ -1,0 +1,260 @@
+{
+  "order": -1,
+  "template": "pfsense_*",
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "analyzer_keyword": {
+            "filter": "lowercase",
+            "tokenizer": "keyword"
+          }
+        }
+      },
+      "max_result_window": "1000000"
+    }
+  },
+  "mappings": {
+    "message": {
+      "properties": {
+        "PFSENSE_ICMP_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_ICMP_ECHO_REQ_REPLY": {
+          "type": "keyword"
+        },
+        "PFSENSE_ICMP_RESPONSE": {
+          "type": "keyword"
+        },
+        "PFSENSE_ICMP_TYPE": {
+          "type": "keyword"
+        },
+        "PFSENSE_ICMP_UNREACHPORT": {
+          "type": "keyword"
+        },
+        "PFSENSE_IGMP_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_IP_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_IP_SPECIFIC_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_IPv4_SPECIFIC_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_LOG_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_LOG_ENTRY": {
+          "type": "keyword"
+        },
+        "PFSENSE_PROTOCOL_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_TCP_DATA": {
+          "type": "keyword"
+        },
+        "PFSENSE_UDP_DATA": {
+          "type": "keyword"
+        },
+        "ack_number": {
+          "type": "keyword"
+        },
+        "action": {
+          "type": "keyword"
+        },
+        "data_length": {
+          "type": "keyword"
+        },
+        "dest_ip": {
+          "type": "keyword"
+        },
+        "dest_ip_city_name": {
+          "type": "keyword"
+        },
+        "dest_ip_country_code": {
+          "type": "keyword"
+        },
+        "dest_ip_geolocation": {
+          "type": "text",
+          "copy_to": "dst_location"
+        },
+        "dst_location": {
+          "type": "geo_point"
+        },
+        "dest_port": {
+          "type": "keyword"
+        },
+        "direction": {
+          "type": "keyword"
+        },
+        "ecn": {
+          "type": "keyword"
+        },
+        "facility": {
+          "type": "keyword"
+        },
+        "flags": {
+          "type": "keyword"
+        },
+        "full_message": {
+          "type": "text",
+          "analyzer": "standard"
+        },
+        "gl2_remote_ip": {
+          "type": "keyword"
+        },
+        "gl2_remote_port": {
+          "type": "keyword"
+        },
+        "gl2_source_input": {
+          "type": "keyword"
+        },
+        "gl2_source_node": {
+          "type": "keyword"
+        },
+        "icmp_echo_id": {
+          "type": "keyword"
+        },
+        "icmp_echo_sequence": {
+          "type": "keyword"
+        },
+        "icmp_type": {
+          "type": "keyword"
+        },
+        "icmp_unreachport_dest_ip": {
+          "type": "keyword"
+        },
+        "icmp_unreachport_dest_ip_city_name": {
+          "type": "keyword"
+        },
+        "icmp_unreachport_dest_ip_country_code": {
+          "type": "keyword"
+        },
+        "icmp_unreachport_dest_ip_geolocation": {
+          "type": "keyword"
+        },
+        "icmp_unreachport_port": {
+          "type": "keyword"
+        },
+        "icmp_unreachport_protocol": {
+          "type": "keyword"
+        },
+        "id": {
+          "type": "keyword"
+        },
+        "iface": {
+          "type": "keyword"
+        },
+        "ip_ver": {
+          "type": "keyword"
+        },
+        "length": {
+          "type": "keyword"
+        },
+        "level": {
+          "type": "long"
+        },
+        "message": {
+          "type": "text",
+          "analyzer": "standard"
+        },
+        "offset": {
+          "type": "keyword"
+        },
+        "proto": {
+          "type": "keyword"
+        },
+        "proto_id": {
+          "type": "keyword"
+        },
+        "reason": {
+          "type": "keyword"
+        },
+        "rule": {
+          "type": "keyword"
+        },
+        "sequence_number": {
+          "type": "keyword"
+        },
+        "source": {
+          "type": "text",
+          "analyzer": "analyzer_keyword",
+          "fielddata": true
+        },
+        "src_ip": {
+          "type": "keyword"
+        },
+        "src_ip_city_name": {
+          "type": "keyword"
+        },
+        "src_ip_country_code": {
+          "type": "keyword"
+        },
+        "src_ip_geolocation": {
+          "type": "string",
+          "copy_to": "src_location"
+        },
+        "src_location": {
+          "type": "geo_point"
+        },
+        "src_port": {
+          "type": "keyword"
+        },
+        "streams": {
+          "type": "keyword"
+        },
+        "tcp_flags": {
+          "type": "keyword"
+        },
+        "tcp_options": {
+          "type": "keyword"
+        },
+        "tcp_window": {
+          "type": "keyword"
+        },
+        "timestamp": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss.SSS"
+        },
+        "timestamp_graf": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss"
+        },
+        "tos": {
+          "type": "keyword"
+        },
+        "tracker": {
+          "type": "keyword"
+        },
+        "ttl": {
+          "type": "keyword"
+        }
+      },
+      "dynamic_templates": [
+        {
+          "internal_fields": {
+            "match": "gl2_*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "store_generic": {
+            "match": "*",
+            "mapping": {
+              "index": "not_analyzed"
+            }
+          }
+        }
+      ],
+      "_source": {
+        "enabled": true
+      }
+    }
+  },
+  "aliases": {}
+}
