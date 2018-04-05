@@ -219,7 +219,7 @@
           "type": "date",
           "format": "yyyy-MM-dd HH:mm:ss.SSS"
         },
-        "timestamp_graf": {
+        "real_timestamp": {
           "type": "date",
           "format": "yyyy-MM-dd HH:mm:ss"
         },
