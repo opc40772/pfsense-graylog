@@ -1,5 +1,4 @@
-{
-   "name":"PFsense Content Pack",
+{  "name":"PFsense Content Pack",
    "description":"Input, Extractors, Streams, Lookup Table, Data Adapter and Cache Adapter",
    "category":"Firewall",
    "inputs":[
