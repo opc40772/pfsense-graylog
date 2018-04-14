@@ -1,5 +1,5 @@
 {  "name":"PFsense Content Pack",
-   "description":"Input, Extractors, Streams, Lookup Table, Data Adapter and Cache Adapter",
+   "description":"Input, Extractors, Streams",
    "category":"Firewall",
    "inputs":[
       {
@@ -213,50 +213,6 @@
          "name":"PFSENSE_ICMP_TSTAMP_REPLY",
          "pattern":"%{INT:icmp_tstamp_reply_id},%{INT:icmp_tstamp_reply_sequence},%{INT:icmp_tstamp_reply_otime},%{INT:icmp_tstamp_reply_rtime},%{INT:icmp_tstamp_reply_ttime}"
       }
-   ],
-   "lookup_tables":[
-      {
-         "title":"Service Port Translator",
-         "description":"Service Port Translator to name service",
-         "name":"Service Port Translator",
-         "cache_name":"cache-service-port",
-         "data_adapter_name":"cvs-port-translate",
-         "default_single_value":"",
-         "default_single_value_type":"NULL",
-         "default_multi_value":"",
-         "default_multi_value_type":"NULL"
-      }
-   ],
-   "lookup_caches":[
-      {
-         "title":"Cache Service Port",
-         "description":"Cache Service Port",
-         "name":"cache-service-port",
-         "config":{
-            "type":"guava_cache",
-            "max_size":1000,
-            "expire_after_access":60,
-            "expire_after_access_unit":"SECONDS",
-            "expire_after_write":0,
-            "expire_after_write_unit":null
-         }
-      }
-   ],
-   "lookup_data_adapters":[
-      {
-         "title":"CVS Port Translate",
-         "description":"Table CVS for translate port service to service name",
-         "name":"cvs-port-translate",
-         "config":{
-            "type":"csvfile",
-            "path":"/etc/graylog/server/service-names-port-numbers.csv",
-            "separator":",",
-            "quotechar":"\"",
-            "key_column":"Port",
-            "value_column":"Service",
-            "check_interval":3,
-            "case_insensitive_lookup":false
-         }
-      }
    ]
+
 }
